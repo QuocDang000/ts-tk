@@ -1,6 +1,8 @@
 import { Box, makeStyles, Paper, Typography } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
+import { useAppDispatch } from "app/hooks";
 import * as React from "react";
+import { authActions } from "../authSlice";
 import LoginButton from "./LoginButton";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -8,30 +10,38 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: '100vh',
+    minHeight: "100vh",
     backgroundColor: theme.palette.grey[100],
   },
 
   paper: {
-    width: '50%',
+    width: "50%",
     padding: theme.spacing(2),
 
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
     },
-  }
+  },
 }));
-
-
 
 export default function LoginPage() {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
+
+  const handleLoginClick = () => {
+    dispatch(
+      authActions.login({
+        username: '',
+        password: '',
+      })
+    )
+  };
 
   return (
     <Box className={classes.root}>
-      <Paper elevation={3}  className={classes.paper}>
-        <Typography variant="h3">Student Management</Typography>
-        <LoginButton />
+      <Paper elevation={3} className={classes.paper}>
+        <Typography variant='h3'>Student Management</Typography>
+        <LoginButton onClickLogin={handleLoginClick} />
       </Paper>
     </Box>
   );
