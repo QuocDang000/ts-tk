@@ -1,9 +1,10 @@
 import { Box, makeStyles, Paper, Typography } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
-import { useAppDispatch } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "app/hooks";
 import * as React from "react";
 import { authActions } from "../authSlice";
 import LoginButton from "./LoginButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {

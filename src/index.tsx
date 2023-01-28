@@ -7,24 +7,21 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { ConnectedRouter } from "connected-react-router";
+import { history } from "utils";
+import ReactDOM from "react-dom";
 
 const container = document.getElementById("root")!;
-const root = createRoot(container);
 
-root.render(
-  <Provider store={store}>
-    <Auth0Provider
-      domain='dev-j3i4pkt7sb42hnak.us.auth0.com'
-      clientId='MEYswLiE0ku1Wm68iYF8roYEJbSqcw59'
-      authorizationParams={{
-        redirect_uri: `${window.location.origin}/admin`,
-      }}
-    >
-      <Router>
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
         <App />
-      </Router>
-    </Auth0Provider>
-  </Provider>
+      </ConnectedRouter>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
