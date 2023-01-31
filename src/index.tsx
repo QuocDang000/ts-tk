@@ -11,17 +11,15 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "utils";
 import ReactDOM from "react-dom";
 
-const container = document.getElementById("root")!;
-
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <App />
       </ConnectedRouter>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    </Provider>,
+  // </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

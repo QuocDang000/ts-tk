@@ -5,6 +5,9 @@ import LogoutButton from 'features/auth/pages/LogoutBtn';
 import * as React from 'react';
 import { Header } from 'components/Common';
 import { SideBar } from 'components/Common/SideBar';
+import { Route, Switch } from 'react-router-dom';
+import { Dashboard } from 'features/dashboard';
+import { StudentFeature } from 'features/student';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -47,8 +50,16 @@ export function Admin () {
         <SideBar />
       </Box>
 
-      <Box className={classes.main}>Main</Box>
-      {/* <LogoutButton/>    */}
+      <Box className={classes.main}>
+        <Switch>
+          <Route path='/admin/dashboard'>
+            <Dashboard />
+          </Route>
+          <Route path='/admin/student'>
+            <StudentFeature />
+          </Route>
+        </Switch>
+      </Box>
     </Box>
   );
 }

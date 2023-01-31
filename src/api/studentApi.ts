@@ -5,14 +5,14 @@ import { ListRes } from "../model/common";
 import axiosClient from "./axiosClient";
 
 const studentApi = {
-  getAllStudent(params: ListParams): Promise<ListRes<City>> {
+  getAllStudent(params: ListParams): Promise<ListRes<Student>> {
     const url = "/students";
     return axiosClient.get(url, {
       params,
     });
   },
 
-  getStudentById(id: string): Promise<ListRes<City>> {
+  getStudentById(id: string): Promise<ListRes<Student>> {
     const url = `/students/${id}`;
     return axiosClient.get(url);
   },
